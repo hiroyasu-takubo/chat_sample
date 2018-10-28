@@ -8,6 +8,5 @@ import java.util.*
 
 @Repository
 interface FeedRepository : JpaRepository<Feed, String> {
-//    ??
     fun findById(id: Long): Optional<Feed>
 }
