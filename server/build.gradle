@@ -1,0 +1,68 @@
+buildscript {
+	ext {
+		kotlinVersion = '1.2.41'
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+//		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+	}
+}
+
+apply plugin: 'kotlin'
+//apply plugin: 'kotlin-spring'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'halo.com.example'
+version = '0.0.1-SNAPSHOT'
+
+bootJar {
+	baseName = 'chat'
+	version =  '0.1.0'
+}
+
+repositories {
+	mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileKotlin {
+	kotlinOptions {
+		freeCompilerArgs = ["-Xjsr305=strict"]
+		jvmTarget = "1.8"
+	}
+}
+compileTestKotlin {
+	kotlinOptions {
+		freeCompilerArgs = ["-Xjsr305=strict"]
+		jvmTarget = "1.8"
+	}
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	compile("org.jetbrains.kotlin:kotlin-reflect")
+	compile('org.springframework.boot:spring-boot-starter-data-redis')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('mysql:mysql-connector-java')
+	compile("org.springframework:spring-jdbc")
+	compile("com.h2database:h2")
+//	runtime('mysql:mysql-connector-java:6.0.6')
+	testCompile("junit:junit")
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('io.springfox:springfox-swagger2:2.7.0') // http://localhost:8080/v2/api-docs が利用可能になります。
+	compile('io.springfox:springfox-swagger-ui:2.7.0') // http://localhost:8080/swagger-ui.html が利用可能になります。
+	compileOnly('org.projectlombok:lombok:1.16.10')
+}
