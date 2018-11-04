@@ -6,8 +6,39 @@ import org.springframework.web.bind.annotation.RestController
 import com.halo.repository.FeedRepository
 
 @RestController
-@RequestMapping("/feed")
+@RequestMapping("/api/feed")
 class FeedController constructor(val repository: FeedRepository){
+    @Autowired
+    internal var feedService: FeedService? = null
+
+    internal val feeds: List<Feed>
+        @RequestMapping(method = RequestMethod.GET)
+        get() = feedService!!.findAll()
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    internal fun insertFeed(@Validated @RequestBody feed: Feed): Feed {
+        return feedService!!.save(feed)
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    internal fun updateFeed(@PathVariable("id") id: Long, @Validated @RequestBody feed: Feed): Feed {
+        feed.setId(id)
+        return feedService!!.save(feed)
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    internal fun deleteFeed(@PathVariable("id") id: Long) {
+        feedService!!.delete(id)
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    internal fun getFeed(@PathVariable("id") id: Long): Feed {
+        return feedService!!.find(id)
+    }
+
 
 //    var respository: FeedRepository;
 //    fun ChatController(FeedRepository repository) {this.repository = repository}
@@ -39,4 +70,39 @@ class FeedController constructor(val repository: FeedRepository){
 //    }
 
 
+}
+
+@RestController
+@RequestMapping("api/feeds")
+class FeedController {
+    @Autowired
+    internal var feedService: FeedService? = null
+
+    internal val whiskies: List<Feed>
+        @RequestMapping(method = RequestMethod.GET)
+        get() = feedService!!.findAll()
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    internal fun insertFeed(@Validated @RequestBody Feed: Feed): Feed {
+        return feedService!!.save(Feed)
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    internal fun updateFeed(@PathVariable("id") id: Long, @Validated @RequestBody Feed: Feed): Feed {
+        Feed.setId(id)
+        return feedService!!.save(Feed)
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    internal fun deleteFeed(@PathVariable("id") id: Long) {
+        feedService!!.delete(id)
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    internal fun getFeed(@PathVariable("id") id: Long): Feed {
+        return feedService!!.find(id)
+    }
 }
