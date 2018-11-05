@@ -9,6 +9,6 @@ data class Feed (
     @GeneratedValue
     val id: Long,
     val message: String,
-    val username: String,
+    val userName: String,
     val registDate: String
 ) {}

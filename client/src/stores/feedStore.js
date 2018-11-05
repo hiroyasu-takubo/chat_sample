@@ -4,10 +4,11 @@ import * as Utils from '../utils';
 import axios from 'axios';
 
 const host =  'http://localhost:8080/';
+const feedRoute = 'feed';
 class feedApi {
 	//こんな感じで取ってくるらしい。
-	// fetchFeeds = () => axios.get(host + 'greet');
-	fetchHello = () => axios.get(host + 'greet');
+	fetchFeeds = () => axios.get(host + feedRoute + '/');
+	// fetchHello = () => axios.get(host + 'greet');
 }
 
 export default class FeedStore {
