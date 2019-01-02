@@ -1,14 +1,14 @@
-package com.sample.service
+package com.halo.service
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-//import com.sample.entity.Feed
-//import com.sample.repository.WhiskyRepository
 import com.halo.model.Feed
-import com.halo.model.FeedRepository
+import com.halo.repository.FeedRepository
+import org.springframework.data.domain.Example
+import java.util.Optional
 
 
 @Service
@@ -25,11 +25,20 @@ class FeedService {
         return feedRepository!!.save(feed)
     }
 
-    fun delete(id: Long) {
-        feeedRepository!!.delete(id)
+    fun delete(feed: Feed) {
+        feedRepository!!.delete(feed)
     }
 
-    fun find(id: Long): Feed {
-        return feedRepository!!.findOne(id)
+    fun deleteById(id: Long) {
+        return feedRepository!!.deleteById(id.toString())
     }
+
+    fun find(feed: Feed): Optional<Feed> {
+        return feedRepository!!.findOne(Example.of(feed))
+    }
+
+    fun findById(id: Long): Optional<Feed> {
+        return feedRepository!!.findById(id)
+    }
+
 }
