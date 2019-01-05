@@ -1,4 +1,5 @@
 import {observable} from 'mobx';
+import { extendObservable } from 'mobx';
 
 export default class FeedModel {
 	store;
@@ -13,6 +14,12 @@ export default class FeedModel {
 		this.message = message;
 		this.userName = userName;
 		this.registDate = registDate;
+
+		extendObservable(this, {
+			message: '',
+			userName: '',
+			registDate: '',
+		})
 	}
 
 	destroy() {

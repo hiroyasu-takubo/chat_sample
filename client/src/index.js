@@ -3,18 +3,20 @@ import ReactDOM, {render} from 'react-dom';
 import './index.css';
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
+import { extendObservable } from 'mobx';
 import DevTools from "mobx-react-devtools";
 
 class feedState {
-	@observable id = 0;
-	@observable message = "";
-	@observable username = "";
-	@observable registDate = 0;
-
 	constructor() {
+		extendObservable(this, {
+			id: '',
+			message: '',
+			userName: '',
+			registDate: '',
+		})
 	}
 
-	@action.bound
+	// @action.bound
 	clear() {
 		this.id = 0;
 		this.message = "";
@@ -25,19 +27,19 @@ class feedState {
 
 const feed = observer(({feedState}) =>
 	<div className="feed" onClick={feedState.clear}>
-		<div>{feedState.id}</div>
-		<div>{feedState.message}</div>
-		<div>{feedState.username}</div>
-		<div>{feedState.registDate}</div>
+	<div>{feedState.id}</div>
+	<div>{feedState.message}</div>
+	<div>{feedState.username}</div>
+	<div>{feedState.registDate}</div>
 	</div>
 )
 
 render(
-	<div>
-		<feed appState={new feedState()} />
-		<DevTools />
-	</div>,
-	document.getElementById("root")
+<div>
+<feed appState={new feedState()} />
+<DevTools />
+</div>,
+document.getElementById("root")
 );
 
 
