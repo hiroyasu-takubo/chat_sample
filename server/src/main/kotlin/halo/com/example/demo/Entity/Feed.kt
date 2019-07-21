@@ -1,4 +1,5 @@
-package com.halo.model;
+package com.halo.model
+
 import lombok.Data
 import lombok.RequiredArgsConstructor
 import javax.persistence.Entity
