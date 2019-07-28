@@ -1,6 +1,4 @@
 import {observable, computed, reaction} from 'mobx';
-// import FeedModel from '../models/FeedModel'
-// import * as Utils from '../utils';
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 const URLSearchParams = require('url').URLSearchParams;
 const host =  'https://localhost:8080/';
@@ -18,10 +16,6 @@ export default class FeedStore {
 			})
 		);
 	}
-
-	autorun(() => {
-		console.log(feeds);
-	});
 
 	// fetchFeeds = async () => {
 	// 	const feeds = await this.feedApi.fetchTodos();
