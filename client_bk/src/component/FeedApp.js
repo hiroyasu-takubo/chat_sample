@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {autorun, observer} from 'mobx-react';
+import {observer} from 'mobx-react';
+
 import FeedOverview from './FeedOverview';
+
 import DevTool from 'mobx-react-devtools';
 
 @observer
@@ -29,7 +31,6 @@ export default class FeedApp extends React.Component {
 			router.init('/');
 		}
 	}
-
 	// componentDidMount() {
 	// 	if (__CLIENT__) {
 	// 		var { Router } = require('director/build/director');

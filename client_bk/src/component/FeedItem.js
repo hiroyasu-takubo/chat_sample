@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {observer} from 'mobx-react';
-import {observable, action, expr} from 'mobx';
+import {observable, expr} from 'mobx';
 
 @observer
 export default class FeedItem extends React.Component {
@@ -31,7 +31,6 @@ export default class FeedItem extends React.Component {
 		);
 	}
 
-	@action
 	handleSubmit = (event) => {
 		const val = this.editMessage.trim();
 		if (val) {
@@ -42,18 +41,15 @@ export default class FeedItem extends React.Component {
 		}
 	};
 
-	@action
 	handleDestroy = () => {
 		this.props.feed.destroy();
 	};
 
-	@action
 	handleEdit = () => {
 		const feed = this.props.feed;
 		this.editMessage = feed.message;
 	};
 
-	@action
 	handleChange = (event) => {
 		this.editMessage = event.target.value;
 	};
