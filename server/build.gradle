@@ -1,7 +1,7 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.3.0'
-		springBootVersion = '2.1.0.RELEASE'
+		kotlinVersion = '1.3.41'
+		springBootVersion = '2.1.6.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -63,7 +63,7 @@ dependencies {
 	compile('mysql:mysql-connector-java')
 	compile("org.springframework:spring-jdbc")
 	compile("com.h2database:h2")
-	compile 'com.fasterxml.jackson.core:jackson-databind:2.3.4'
+//	compile 'com.fasterxml.jackson.core:jackson-databind:2.3.4'
 //	runtime('mysql:mysql-connector-java:6.0.6')
 	testCompile("junit:junit")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
