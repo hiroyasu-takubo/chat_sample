@@ -2,6 +2,7 @@ package com.halo.model
 
 import lombok.Data
 import lombok.RequiredArgsConstructor
+import javax.persistence.Column;
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -22,8 +23,10 @@ data class Feed (
     var message: String,
 
     @NotNull
+    @Column(name="user_name")
     var userName: String,
 
     @NotNull
+    @Column(name="regist_date")
     var registDate: String
 ) {}

@@ -22,7 +22,6 @@ class ChatController constructor(val repository: FeedRepository){
         val feed = Feed(1, "hoge", "satou", "2019/07/18")
         return feed
     }
-
     // GET のみ対応
     //axiosを使う際は普通にjsonを返してやればajax通信ができる。
     val sample: String
