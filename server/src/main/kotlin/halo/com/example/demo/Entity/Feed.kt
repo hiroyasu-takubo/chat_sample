@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull
 
 @Data
 @Entity
-@Table(name = "\"feeds\"")
+@Table(name = "feeds")
 @RequiredArgsConstructor
 data class Feed (
     @Id
