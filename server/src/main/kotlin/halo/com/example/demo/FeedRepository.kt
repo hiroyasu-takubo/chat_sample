@@ -1,6 +1,6 @@
-package com.halo.repository
+package halo.com.example.demo
 
-import com.halo.model.Feed
+import halo.com.example.demo.Feed
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import java.util.*

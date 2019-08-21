@@ -1,4 +1,4 @@
-package com.halo.model
+package halo.com.example.demo
 
 import lombok.Data
 import lombok.RequiredArgsConstructor

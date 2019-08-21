@@ -1,12 +1,12 @@
-package com.halo.service
+package halo.com.example.demo
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-import com.halo.model.Feed
-import com.halo.repository.FeedRepository
+import halo.com.example.demo.Feed
+import halo.com.example.demo.FeedRepository
 import org.springframework.data.domain.Example
 import java.util.Optional
 

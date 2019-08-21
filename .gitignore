@@ -5,7 +5,7 @@ build
 
 log/*
 log
-app.log
+app.log*
 
 ### STS ###
 .apt_generated
