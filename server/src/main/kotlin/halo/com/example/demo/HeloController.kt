@@ -19,19 +19,19 @@ import org.slf4j.Logger
 class HeloController constructor(val repository: FeedRepository, val empRepository: EmployeeRepository){
     private val logger = LoggerFactory.getLogger(HeloController::class.java)
 
-    @RequestMapping(value = ["/"], method = [RequestMethod.GET])
-    fun index(model :Model): String  {
-        logger.info("Hello Logback!!")
-        var emplist: List<Employee> = empRepository.findAll()
-        model.addAttribute("emplist", emplist)
-
-        return "index"
-    }
-
-    @GetMapping("/hello")
-    fun hello(model :Model): String  {
-        logger.info("hello action")
-        model.addAttribute("message", "Hello Thmeleaf")
-        return "hello"
-    }
+//    @RequestMapping(value = ["/"], method = [RequestMethod.GET])
+//    fun index(model :Model): String  {
+//        logger.info("Hello Logback!!")
+//        var emplist: List<Employee> = empRepository.findAll()
+//        model.addAttribute("emplist", emplist)
+//
+//        return "index"
+//    }
+//
+//    @GetMapping("/hello")
+//    fun hello(model :Model): String  {
+//        logger.info("hello action")
+//        model.addAttribute("message", "Hello Thmeleaf")
+//        return "hello"
+//    }
 }

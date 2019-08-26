@@ -16,12 +16,12 @@ class ChatController constructor(val repository: FeedRepository){
 
     private val logger = LoggerFactory.getLogger(ChatController::class.java)
 
-    @GetMapping("hello")
+    @GetMapping("/hello")
     fun hello(): String  {
         return "Hello World!"
     }
 
-    @GetMapping("samplemessage")
+    @GetMapping("/samplemessage")
     @ResponseBody
     fun sampleMessage(): Feed {
         val feed = Feed(1, "hoge", "satou", "2019/07/18")
@@ -30,25 +30,24 @@ class ChatController constructor(val repository: FeedRepository){
 
     @GetMapping("/")
     fun index(model :Model): String  {
-        logger.debug("debug");
-        logger.info("Hello Logback!!")
-        logger.warn("warn");
-        logger.error("error");
+        logger.info("index action")
         val feedlist: List<Feed> = repository.findAll()
-        model.addAttribute("feedlist", feedlist)
-//        logger.info("called index")
+        return feedlist
+    }
+
+    @RequestMapping(value = ["/"], method = [RequestMethod.GET])
+    fun index(model :Model): String  {
+        logger.info("Hello Logback!!")
+        var emplist: List<Employee> = empRepository.findAll()
+        model.addAttribute("emplist", emplist)
+
         return "index"
     }
 
-     GET のみ対応
-    axiosを使う際は普通にjsonを返してやればajax通信ができる。
-    val sample: String
-        @GetMapping("getsample")
-        get() = "ok getsample"
-
-     すべての HTTP メソッドに対応
-    @RequestMapping("api/greeting")
-    fun index(): String {
-        return "Greetings from Spring Boot!"
+    @GetMapping("/hello")
+    fun hello(model :Model): String  {
+        logger.info("hello action")
+        model.addAttribute("message", "Hello Thmeleaf")
+        return "hello"
     }
 }
