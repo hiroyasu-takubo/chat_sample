@@ -29,25 +29,10 @@ class ChatController constructor(val repository: FeedRepository){
     }
 
     @GetMapping("/")
-    fun index(model :Model): String  {
+    fun index(model :Model): List<Feed>  {
         logger.info("index action")
         val feedlist: List<Feed> = repository.findAll()
         return feedlist
     }
-
-    @RequestMapping(value = ["/"], method = [RequestMethod.GET])
-    fun index(model :Model): String  {
-        logger.info("Hello Logback!!")
-        var emplist: List<Employee> = empRepository.findAll()
-        model.addAttribute("emplist", emplist)
-
-        return "index"
-    }
-
-    @GetMapping("/hello")
-    fun hello(model :Model): String  {
-        logger.info("hello action")
-        model.addAttribute("message", "Hello Thmeleaf")
-        return "hello"
-    }
+    
 }
